@@ -10,6 +10,7 @@
 <body>
   <h1>Generate a register link</h1>
   <button id="generate">Generate Link</button>
+  <br />
   <div id="link-container">
 
   </div>
@@ -22,14 +23,14 @@
         const result = await fetch('https://staging.webinars.api.tame.events/product/invitation?apiToken=5a55705f08c8d3dfb1c52c66c155dadc', {
           method: 'POST'
         });
-        console.log(result);
-        const inviteUrl = result.json().invitationUrl;
-        const token = inviteUrl.split('=')[1];
+        
+        const json = await result.json();
+        const token = json.invitationUrl.split('=')[1];
         const link = document.createElement('a');
         link.appendChild(document.createTextNode(`Click to register with token '${token}'`));
         link.href = `https://staging.organiser-platform.tame.events/register?token=${token}`;
         link.target = "_blank";
-        
+
         linkContainer.appendChild(link);
       } catch (error) {
         console.error(error);
