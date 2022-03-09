@@ -23,6 +23,14 @@
           method: 'POST'
         });
         console.log(result);
+        const inviteUrl = result.json().invitationUrl;
+        const token = inviteUrl.split('=')[1];
+        const link = document.createElement('a');
+        link.appendChild(document.createTextNode(`Click to register with token '${token}'`));
+        link.href = `https://staging.organiser-platform.tame.events/register?token=${token}`;
+        link.target = "_blank";
+        
+        linkContainer.appendChild(link);
       } catch (error) {
         console.error(error);
       }
