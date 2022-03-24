@@ -20,7 +20,7 @@
     button.addEventListener('click', async (e) => {
       e.preventDefault();
       try {
-        const result = await fetch('https://staging.webinars.api.tame.events/product/invitation?apiToken=5a55705f08c8d3dfb1c52c66c155dadc', {
+        const result = await fetch('https://webinars.api.staging.tame.events/product/invitation?apiToken=5a55705f08c8d3dfb1c52c66c155dadc', {
           method: 'POST'
         });
         
@@ -28,7 +28,7 @@
         const token = json.invitationUrl.split('=')[1];
         const link = document.createElement('a');
         link.appendChild(document.createTextNode(`Click to register with token '${token}'`));
-        link.href = `https://staging.organiser-platform.tame.events/register?token=${token}`;
+        link.href = `https://organiser-platform.staging.tame.events/register?token=${token}`;
         link.target = "_blank";
 
         linkContainer.appendChild(link);
